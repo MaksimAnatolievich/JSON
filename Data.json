@@ -4,25 +4,5 @@
         "Age": 33,
         "Email": "33@gmail.com",
         "password": "\u0423 \u043c\u0435\u043d\u044f \u043f\u043e\u043b\u0443\u0447\u0438\u043b\u043e\u0441\u044c"
-    },
-    {
-        "username": "ruslan",
-        "age": 81,
-        "Email": "81@gmail.com"
-    },
-    {
-        "username": "fvdf",
-        "password": "dfv",
-        "age": 90
-    },
-    {
-        "username": "vany",
-        "password": "kjhgfdfghj",
-        "age": 101
-    },
-    {
-        "username": "ggggg",
-        "password": "fffff",
-        "age": 32
     }
 ]
