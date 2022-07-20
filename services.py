@@ -7,8 +7,6 @@ filename = "D:\Программирование\python\JSON\Data.json"
 listObj = []
 
 
-# Check if file exists
-
 def get_users():
     if path.isfile(filename) is False:
         raise Exception("File not found")
@@ -41,10 +39,50 @@ def save_users(users):
                   indent=4,
                   separators=(',', ': '))
 
-#обновить пароль юзера по username
+
+# обновить пароль юзера по username
 def update_user(username, new_password):
     users = get_users()
     for i in users:
         if i.get('username') == username:
             i.update({"password": new_password})
     save_users(users)
+
+
+# hard level
+
+
+# def delete_user(username):
+#     users = get_users()
+#     try:
+#         success = False
+#         for i in users:
+#             if i.get('username') == username:
+#                 users.remove(i)
+#                 success=True
+#         if not success:
+#             raise Exception("UserDoesNotExists")
+#     except Exception as e:
+#         print(str(e))
+#     save_users(users)
+
+
+def delete_user(username):
+    users = get_users()
+    try:
+        user=get_user(username)
+        if not user:
+            raise Exception("UserDoesNotExists")
+
+        users.remove(user)
+
+
+    except Exception as e:
+        print(str(e))
+    save_users(users)
+
+def get_user(username):
+    users = get_users()
+    for user in users:
+        if user.get('username') == username:
+            return user
