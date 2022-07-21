@@ -4,5 +4,10 @@
         "Age": 33,
         "Email": "33@gmail.com",
         "password": "\u0423 \u043c\u0435\u043d\u044f \u043f\u043e\u043b\u0443\u0447\u0438\u043b\u043e\u0441\u044c"
+    },
+    {
+        "username": "vlad",
+        "password": "34",
+        "age": 9
     }
 ]

@@ -2,7 +2,8 @@
 
 import json
 from os import path
-
+from exceptions import UserAlreadyExistsException
+from exceptions import UserNotFoundException
 filename = "D:\Программирование\python\JSON\Data.json"
 listObj = []
 
@@ -43,10 +44,16 @@ def save_users(users):
 # обновить пароль юзера по username
 def update_user(username, new_password):
     users = get_users()
-    for i in users:
-        if i.get('username') == username:
-            i.update({"password": new_password})
-    save_users(users)
+    try:
+        user = get_user(username)
+        if not user:
+            raise UserNotFoundException(username)
+        for i in users:
+            if i.get('username') == username:
+                i.update({"password": new_password})
+        save_users(users)
+    except UserNotFoundException as e:
+        print(str(e))
 
 
 # hard level
@@ -72,12 +79,12 @@ def delete_user(username):
     try:
         user=get_user(username)
         if not user:
-            raise Exception("UserDoesNotExists")
+            raise UserNotFoundException(username)
 
         users.remove(user)
 
 
-    except Exception as e:
+    except UserNotFoundException as e:
         print(str(e))
     save_users(users)
 
@@ -86,3 +93,20 @@ def get_user(username):
     for user in users:
         if user.get('username') == username:
             return user
+
+def create_user(username, password, age):
+    users = get_users()
+    try:
+        user = get_user(username)
+        if user:
+            raise UserAlreadyExistsException(username)
+        users.append({"username": username,
+                  "password": password,
+                  "age": age})
+
+        save_users(users)
+    except UserAlreadyExistsException as e:
+        print(str(e))
+
+
+

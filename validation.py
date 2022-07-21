@@ -5,7 +5,7 @@ def validate_username(username):
 
 def  validate_password(password):
 
-    if len(password) < 7 or not re.search('\d+', password) :
+    if len(password) < 2 or not re.search('\d+', password) :
         raise Exception('password is in correct')
 
 
